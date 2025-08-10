@@ -1,0 +1,155 @@
+{% load fultercustome %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Management</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #0d47a1;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        .icon {
+            font-size: 24px;
+        }
+        .card-title {
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 5px;
+        }
+        .card-content {
+            font-size: 16px;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .note {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            margin-top: 25px;
+            padding: 10px;
+            background: #e3f2fd;
+            border-radius: 8px;
+        }
+        .text {
+            display: flex;
+            flex-direction: column;
+        }
+  a {
+    display: inline-block;
+    margin: 25px auto 0;
+    padding: 12px 30px;
+    background-color: #1565c0;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  a:hover {
+    background-color: #0d375c;
+  }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello for all Students</h1>
+
+        <div class="card">
+            <div class="icon">👤</div>
+            <div class="text">
+                <div class="card-title">Default Name</div>
+                <div class="card-content">{{ fname | default:' Al-Jabali' }}</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔠</div>
+            <div class="text">
+                <div class="card-title">Uppercase</div>
+                <div class="card-content">{{ fname | upper }}</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔡</div>
+            <div class="text">
+                <div class="card-title">Lowercase</div>
+                <div class="card-content">{{ fname | lower }}</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔤</div>
+            <div class="text">
+                <div class="card-title">Capitalize First Letter</div>
+                <div class="card-content">{{ fname | capfirst }}</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icon">📏</div>
+            <div class="text">
+                <div class="card-title">Name Length</div>
+                <div class="card-content">{{ fname | length }}</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icon">✂️</div>
+            <div class="text">
+                <div class="card-title">Slice (First 2 Characters)</div>
+                <div class="card-content">{{ fname | slice:2 }}</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icon">➕</div>
+            <div class="text">
+                <div class="card-title">Add "Saeed"</div>
+                <div class="card-content">{{ fname | add:' Saeed' }}</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔄</div>
+            <div class="text">
+                <div class="card-title">Alternating Case</div>
+                <div class="card-content">{{ fname | alternating_case }}</div>
+            </div>
+        </div>
+
+        <div class="note">💡 Django Template Filters Example with Icons</div>
+        <a href="{% url 'home' %}">Go to Home Page</a>
+    </div>
+</body>
+</html>

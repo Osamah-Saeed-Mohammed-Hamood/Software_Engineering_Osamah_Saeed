@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Edit Students</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px 40px;
+            max-width: 550px;
+            width: 100%;
+            color: #333;
+        }
+        h3 {
+            color: #0d47a1;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        p {
+            font-size: 16px;
+            margin: 8px 0 18px 0;
+            padding-left: 12px;
+            border-left: 4px solid #1565c0;
+            background: #e3f2fd;
+            border-radius: 4px;
+            max-width: fit-content;
+        }
+        ul {
+            list-style: inside disc;
+            padding-left: 20px;
+            margin-top: 0;
+        }
+        li {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        /* زر الرجوع */
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background-color: #1565c0;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #0d375c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>if</h3>
+        {% if total > 250 %}
+            <p>Ex</p>
+        {% endif %}
+
+        <h3>if and else</h3>
+        {% if total > 250 %}
+            <p>Ex</p>
+        {% else %}
+            <p>Good</p>
+        {% endif %}
+
+        <h3>if, elif and else</h3>
+        {% if total > 250 %}
+            <p>EX</p>
+        {% elif total < 250 and total > 200 %}
+            <p>Very Good</p>
+        {% else %}
+            <p>Good</p>
+        {% endif %}
+
+        <h3>For loop</h3>
+        <ul>
+            {% for sub, mark in marks.items %}
+                <li>{{ sub }} : {{ mark }}</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'home' %}">Back</a>
+    </div>
+</body>
+</html>

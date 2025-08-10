@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 30px 40px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    }
+    ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    }
+    li {
+    margin: 15px 0;
+    }
+    a {
+    display: block;
+    padding: 12px 0;
+    background: #1565c0;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    }
+    a:hover {
+    background: #0d375c;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li><a href="{% url 'show' %}">Show</a></li>
+            <li><a href="{% url 'edit' %}">Edit</a></li>
+            <li><a href="{% url 'delete' %}">Delete</a></li>
+            <li><a href="{% url 'index' %}">Back to Index Page</a></li>
+        </ul>
+    </div>
+</body>
+</html>

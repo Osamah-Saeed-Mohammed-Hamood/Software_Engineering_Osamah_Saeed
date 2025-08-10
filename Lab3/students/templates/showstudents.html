@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h2 {
+            color: #0d47a1;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        ul {
+            list-style: inside disc;
+            padding-left: 0;
+            margin-bottom: 25px;
+            color: #333;
+            text-align: left;
+        }
+        li {
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 25px;
+            background: #1565c0;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background: #0d375c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome : {{ name }}</h2>
+
+        <h3>Your Marks:</h3>
+        <ul>
+            {% for mark in marks %}
+                <li>{{ mark }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Your Mark in Each Subject:</h3>
+        <ul>
+            {% for subject, score in eachsub.items %}
+                <li><strong>{{ subject }}:</strong> {{ score }}</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'home' %}">Back</a>
+    </div>
+</body>
+</html>
