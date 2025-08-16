@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% block content1 %}
+    <div class="welcome-box2">
+        قائمة الطلاب
+    </div>
+{% endblock %}
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>الاسم الاول</th>
+                    <th>الاسم الاخير</th>
+                    <th>العمر</th>
+                    <th>الجنس</th>
+                    <th>المرحلة الجامعية</th>
+                    <th>منتظم</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in Students %}
+                {% if student.Status == "لا" %}
+                <tr style="background-color: pink;">
+                    <td>{{student.FirstName}}</td>
+                    <td>{{student.LastName}}</td>
+                    <td>{{student.Age}}</td>
+                    <td>{{student.Gender}}</td>
+                    <td>{{student.Level}}</td>
+                    <td>{{student.Status}}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td>{{student.FirstName}}</td>
+                    <td>{{student.LastName}}</td>
+                    <td>{{student.Age}}</td>
+                    <td>{{student.Gender}}</td>
+                    <td>{{student.Level}}</td>
+                    <td>{{student.Status}}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}

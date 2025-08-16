@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% block content1 %}
+    <div class="welcome-box2">
+        قائمة المعلمين
+    </div>
+{% endblock %}
+
+<main>
+    <table>
+        <thead>
+            <tr>
+                <th>الاسم الاول</th>
+                <th>الاسم الاخير</th>
+                <th>العمر</th>
+                <th>الجنس</th>
+                <th>القسم</th>
+                <th>منتظم</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for teacher in Teachers %}
+                {% if teacher.Status == "لا" %}
+                <tr style="background-color: pink;">
+                    <td>{{ teacher.FirstName }}</td>
+                    <td>{{ teacher.LastName }}</td>
+                    <td>{{ teacher.Age }}</td>
+                    <td>{{ teacher.Gender }}</td>
+                    <td>{{ teacher.Department }}</td>
+                    <td>{{ teacher.Status }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td>{{ teacher.FirstName }}</td>
+                    <td>{{ teacher.LastName }}</td>
+                    <td>{{ teacher.Age }}</td>
+                    <td>{{ teacher.Gender }}</td>
+                    <td>{{ teacher.Department }}</td>
+                    <td>{{ teacher.Status }}</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+{% endblock %}
