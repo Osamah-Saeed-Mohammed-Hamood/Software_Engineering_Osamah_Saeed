@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول | USI School</title>
+    
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/userhome.css' %}">
+</head>
+<body>
+
+        
+        <div class="login-container">
+            <div class="card-header">
+                <h1>USI School</h1>
+                <p>تسجيل الدخول إلى حسابك</p>
+            </div>
+            
+            <form method="POST" novalidate>
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                    <div class="error-message non-field-error">
+                        {{ form.non_field_errors.0 }}
+                    </div>
+                {% endif %}
+
+                <div class="input-group">
+                    <div class="label-wrapper">
+                        <label for="{{ form.username.id_for_label }}">اسم المستخدم</label>
+                    </div>
+                    <div class="input-wrapper">
+                        {{ form.username }}
+                        <i class="fas fa-user toggle-input-icon"></i>
+                    </div>
+                    {% if form.username.errors %}
+                        <div class="error-message">{{ form.username.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+
+                <div class="input-group">
+                    <div class="label-wrapper">
+                        <label for="{{ form.password.id_for_label }}">كلمة المرور</label>
+                        <a href="#" class="forgot-password">هل نسيت كلمة المرور؟</a>
+                    </div>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        {{ form.password }}
+                        <i class="fas fa-eye-slash toggle-password"></i>
+                    </div>
+                    {% if form.password.errors %}
+                        <div class="error-message">{{ form.password.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="submit-btn">تسجيل الدخول</button>
+            </form>
+            
+          
+
+            <p class="register-link">ليس لديك حساب؟ <a href="{% url 'user:register' %}">إنشاء حساب جديد</a></p>
+        </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

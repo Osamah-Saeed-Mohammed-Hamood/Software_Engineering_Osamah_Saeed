@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/allStudents.css' %}">
+
+{% block content1 %}
+    <div class="welcome-box2">
+        قائمة الطلاب
+    </div>
+{% endblock %}
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <main>
+        <div class="actions">
+            <a href="{% url 'students:Add_new_student' %}" class="add-btn">➕  إضافة طالب جديد</a>
+            <div class="filter-buttons">
+                <a class="btn regular" href="{% url 'students:all_students' %}?q=True">منتظم</a>
+                <a class="btn irregular" href="{% url 'students:all_students' %}?q=False">غير منتظم</a>
+                <a class="btn all" href="{% url 'students:all_students' %}?q=all">الجميع</a>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>الاسم الاول</th>
+                    <th>الاسم الاخير</th>
+                    <th>العمر</th>
+                    <th>المرحلة الجامعية</th>
+                    <th>منتظم</th>
+                    <th>التقرير</th>
+                    <th>خيارات</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in Students %}
+                {% if student.Status == "لا" %}
+                <tr {% if student.Status == False %} style="background-color: pink;" {% endif %}>
+                    <td data-label="الاسم الاول">{{student.f_name}}</td>
+                    <td data-label="الاسم الاخير">{{student.l_name}}</td>
+                    <td data-label="العمر">{{student.age}}</td>
+                    <td data-label="المرحلة الجامعية">{{student.level}}</td>
+                    <td data-label="منتظم">{{student.status}}</td>
+                    <td data-label="التقرير">{{student.report}}</td>
+                    <td data-label="تحكم" class="control-icons">
+                        <a href="{% url 'students:student_one' student.id %}" title="معلومات الطالب">
+                            🔍
+                        </a>
+                        <a href="{% url 'students:updateStudent' student.id %}" title="تعديل الطالب">
+                            ✏️
+                        </a>
+                        <a href="#" 
+                            class="js-delete" 
+                            data-url="{% url 'students:deleteStudent' student.id %}" 
+                            data-name="{{ student.FirstName }} {{ student.LastName }}" 
+                            title="حذف الطالب">
+                            🗑️
+                        </a>
+                    </td>
+                </tr>
+
+                {% else %}
+                <tr>
+                    <td>{{student.f_name}}</td>
+                    <td>{{student.l_name}}</td>
+                    <td>{{student.age}}</td>
+                    <td>{{student.level}}</td>
+                    <td>{{student.status}}</td>
+                    <td>{{student.report}}</td>
+                    <td data-label="تحكم" class="control-icons">
+                        <a href="{% url 'students:student_one' student.id %}" title="معلومات الطالب">
+                            🔍
+                        </a>
+                        <a href="{% url 'students:updateStudent' student.id %}" title="تعديل الطالب">
+                            ✏️
+                        </a>
+                        <a href="#" 
+                            class="js-delete" 
+                            data-type = "الطالب"
+                            data-url="{% url 'students:deleteStudent' student.id %}" 
+                            data-name="{{ student.f_name }} {{ student.l_name }}" 
+                            title="حذف الطالب">
+                            🗑️
+                        </a>
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">المجموع:</td>
+                    <td colspan="5">{{Students_count}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </main>
+
+<script src="{% static 'js/delete_accepted.js' %}"></script>
+<script src="{% static 'js/messages.js' %}"></script>
+
+{% endblock %}

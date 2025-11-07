@@ -1,0 +1,75 @@
+/* شكل الصندوق العام للفورم */
+form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #f3f9ff, #e6f0ff);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* عنوان الفورم */
+form h1 {
+    text-align: center;
+    color: #1a73e8;
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+/* المسافات بين الحقول */
+form p {
+    margin-bottom: 20px;
+}
+
+/* تصميم الحقول */
+input, select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* تأثير التركيز على الحقول */
+input:focus, select:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 8px rgba(26, 115, 232, 0.3);
+    outline: none;
+}
+
+/* زر الإرسال */
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #1a73e8;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* تأثير عند المرور بالماوس على الزر */
+button:hover {
+    background-color: #155ab6;
+    transform: translateY(-2px);
+}
+
+/* رسالة النجاح */
+.success-message {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+}

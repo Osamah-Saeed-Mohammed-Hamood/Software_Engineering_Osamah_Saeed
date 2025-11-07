@@ -1,0 +1,185 @@
+/* ===== صندوق العنوان ===== */
+.welcome-box2 {
+    background: linear-gradient(135deg, #333, #222);
+    color: #ffd700; /* ذهبي */
+    text-align: center;
+    padding: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 30px auto 20px auto;
+    width: 60%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+}
+
+/* ===== Container البطاقة ===== */
+.student-detail-card {
+    max-width: 700px;
+    margin: 40px auto 100px auto;
+}
+
+/* ===== Student Card ===== */
+.student-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 25px;
+    text-align: right;
+    direction: rtl;
+    transition: 0.3s;
+}
+
+.student-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* ===== Image Section ===== */
+.student-card .image-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.student-card .image-section img.image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ===== Student Info ===== */
+.student-card .student-info h5 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 8px;
+}
+
+.student-card .student-info p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #555;
+    line-height: 1.7;
+}
+
+.student-card .student-info p strong {
+    color: #333;
+}
+
+/* ===== Image Info داخل البطاقة ===== */
+.student-card .student-info .image-info {
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.student-card .student-info .image-info h6 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #ffd700;
+    padding-bottom: 5px;
+}
+
+.student-card .student-info .image-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.student-card .student-info .image-info li {
+    padding: 4px 0;
+    color: #555;
+}
+
+/* ===== Grade Status ===== */
+.student-status {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.student-status.excellent {
+    background: #e6ffe6;
+    color: #006600;
+    border: 1px solid #00b300;
+}
+
+.student-status.very-good {
+    background: #e6f0ff;
+    color: #004080;
+    border: 1px solid #3366cc;
+}
+
+.student-status.good {
+    background: #fffbe6;
+    color: #805500;
+    border: 1px solid #e6b800;
+}
+
+.student-status.accepted {
+    background: #f9f2ec;
+    color: #996633;
+    border: 1px solid #cc9966;
+}
+
+.student-status.failed {
+    background: #ffe6e6;
+    color: #b30000;
+    border: 1px solid #ff0000;
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width: 600px) {
+    .student-card {
+        padding: 20px;
+    }
+    .student-card .image-section img.image {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* ===== Related Sections (Teachers, Profile, Courses) ===== */
+.related-section {
+    background: #fff;
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    direction: rtl;
+    text-align: right;
+}
+
+.related-section h4 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 5px;
+}
+
+.related-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.related-section ul li {
+    padding: 6px 0;
+    color: #444;
+    font-size: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.related-section ul li:last-child {
+    border-bottom: none;
+}

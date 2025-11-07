@@ -1,0 +1,178 @@
+/* تنسيقات عامة */
+body {
+    font-family: "Cairo", sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+    color: #333;
+}
+
+/* صندوق العنوان */
+.welcome-box2 {
+    background: linear-gradient(135deg, #333, #222);
+    color: #ffd700; /* نفس الذهبي حق الهيدر والفوتر */
+    text-align: center;
+    padding: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 30px auto 20px auto;
+    width: 60%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+}
+
+/* تنسيق الجدول */
+main {
+    width: 90%;
+    margin: 20px auto 80px auto; /* مسافة مع الفوتر */
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+thead {
+    background-color: #333; /* غامق مثل الهيدر */
+    color: #ffd700;        /* ذهبي */
+}
+
+thead th {
+    padding: 14px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    transition: background-color 0.25s ease-in-out;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.95rem;
+}
+
+/* تمييز الصفوف للطلاب غير المنتظمين */
+tbody tr[style] {
+    background-color: #ffe0e6 !important;
+    color: #a80028;
+    font-weight: bold;
+}
+
+/* التحكم بالأيقونات */
+.control-icons a {
+    margin: 0 6px;
+    text-decoration: none;
+    font-size: 20px;
+    transition: transform 0.25s, color 0.25s;
+    display: inline-block;
+    color: #333;
+}
+
+.control-icons a:hover {
+    transform: scale(1.2);
+    color: #ffd700;
+}
+
+/* تذييل الجدول */
+tfoot td {
+    padding: 12px;
+    background-color: #333; /* نفس الفوتر */
+    color: #ffd700;         /* ذهبي */
+    font-weight: bold;
+    text-align: center;
+}
+
+/* صندوق الرسائل */
+.messages {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* الرسائل العامة */
+.alert {
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* نجاح */
+.alert.success {
+    background-color: #dff0d8;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+/* خطأ */
+.alert.error {
+    background-color: #f8d7da;
+    color: #b71c1c;
+    border: 1px solid #f5c6cb;
+}
+
+/* تحذير */
+.alert.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+/* معلومات */
+.alert.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* حركة دخول الرسالة */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+.actions {
+    width: 90%;
+    margin: 15px auto;
+    text-align: left;
+}
+
+.add-btn {
+    background: linear-gradient(135deg, #ffd700, #e6c200);
+    color: #222;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.add-btn:hover {
+    background: linear-gradient(135deg, #e6c200, #d4af37);
+    transform: scale(1.05);
+}

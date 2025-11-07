@@ -1,0 +1,33 @@
+{% load static %}
+<script src="{% static 'js/notifications.js' %}"></script>
+
+<div class="notification-dropdown">
+    <button class="icon-btn">
+        🔔
+        <span class="badge">{{ notificationCount }}</span>
+    </button>
+
+    <div class="dropdown-content">
+        {% if all_notification_count > 0 %}
+            {% for notif in notification %}
+            <div class="notif-item">
+                <a href="{% url 'home:read' notif.id %}">
+                    {% if notif.unread %}
+                    <span class="circle"></span>
+                    {% endif %}
+                    <div class="notif-text">
+                        <strong>{{ notif.verb }}</strong>
+                        <p>{{ notif.description }}</p>
+                    </div>
+                </a>
+                <a href="{% url 'home:delete' notif.id %}" class="delete-btn">
+                    🗑️
+                </a>
+            </div>
+            <hr>
+            {% endfor %}
+        {% else %}
+            <p class="empty">لا توجد إشعارات جديدة</p>
+        {% endif %}
+    </div>
+</div>

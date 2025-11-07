@@ -1,0 +1,183 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Navigation Bar */
+nav {
+    background: #333;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    position: relative; /* علشان نقدر نوسّط القائمة */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+/* Center Menu */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    left: 50%;              /* نبدأ من المنتصف */
+    transform: translateX(-50%); /* نوسّط بالتمام */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffd700; /* Gold hover */
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer span {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+
+/* 🔔 Notification Dropdown */
+.notification-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: auto; /* تدفع الأيقونة لليمين */
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    font-size: 1.4rem;
+    color: #fff; /* نفس لون روابط النافبار */
+}
+
+.icon-btn:hover {
+    color: #ffd700; /* نفس تأثير hover للرابط */
+}
+
+.badge {
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 6px;
+    font-size: 0.7rem;
+    position: absolute;
+    top: -6px;
+    right: -10px;
+}
+
+/* قائمة الإشعارات */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;             
+    background: #fff; /* عشان تظهر فوق النافبار الغامق */
+    color: #333;
+    min-width: 280px;
+    max-height: 350px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+/* إظهار القائمة عند hover */
+.notification-dropdown .dropdown-content.show {
+    display: block;
+}
+
+/* العناصر داخل القائمة */
+.notif-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    transition: background 0.2s;
+}
+
+.notif-item:hover {
+    background: #f4f4f4;
+}
+
+.notif-item a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    gap: 8px;
+}
+
+.notif-text strong {
+    display: block;
+    font-size: 0.9rem;
+    color: #000;
+}
+
+.notif-text p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: gray;
+}
+
+/* الدائرة الحمراء بجانب الإشعار */
+.circle {
+    width: 10px;
+    height: 10px;
+    background: red;
+    border-radius: 50%;
+    align-self: center;
+    margin-left: 5px;
+}
+
+/* زر الحذف */
+.delete-btn {
+    color: red;
+    font-size: 0.9rem;
+}
+
+.delete-btn:hover {
+    color: darkred;
+}
+
+.empty {
+    text-align: center;
+    padding: 10px;
+    color: gray;
+    font-size: 0.85rem;
+}
+/* نخلي الإشعارات على أقصى اليسار */
+.notification-container {
+    margin-right: auto; /* لأنه RTL → يدفها لليسار */
+}
+
+/* لو كان LTR بتستخدم margin-left: auto; */

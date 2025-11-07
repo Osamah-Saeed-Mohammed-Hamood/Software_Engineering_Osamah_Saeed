@@ -1,0 +1,64 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Navigation Bar */
+nav {
+    background: #333;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    position: relative; /* علشان نقدر نوسّط القائمة */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+/* Center Menu */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    left: 50%;              /* نبدأ من المنتصف */
+    transform: translateX(-50%); /* نوسّط بالتمام */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffd700; /* Gold hover */
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer span {
+    color: #ffd700;
+    font-weight: bold;
+}

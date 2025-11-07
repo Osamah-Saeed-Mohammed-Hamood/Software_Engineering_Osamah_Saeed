@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/student_one.css' %}">
+
+{% block pageTitle %}
+<div class="welcome-box2">تفاصيل الطالب</div>
+{% endblock %}
+
+<div class="student-detail-card">
+
+    <!-- ===== Student Card with Image ===== -->
+    <div class="student-card">
+        <!-- Image -->
+        <div class="image-section">
+            <img class="image" src="{{ student.image.url }}" alt="صورة الطالب">
+        </div>
+
+        <!-- Student Info -->
+        <div class="student-info">
+            <h5 class="card-title">{{student.id}} - {{ student.f_name }} {{ student.l_name }}</h5>
+            <p><strong>العمر:</strong> {{ student.age }}</p>
+            <p><strong>المستوى:</strong> {{ student.level}}</p>
+            <p><strong>الحالة:</strong>
+                {% if student.status %}
+                    منتظم
+                {% else %}
+                    غير منتظم
+                {% endif %}
+            </p>
+            <p><strong>المعدل:</strong> {{ student.gpa }}</p>
+            <p><strong>التقرير:</strong> {{ student.report }}</p>
+
+            <!-- Image Info -->
+            <div class="image-info">
+                <h6>معلومات الصورة</h6>
+                <ul>
+                    <li><strong>العرض:</strong> {{ student.image.width }} px</li>
+                    <li><strong>الارتفاع:</strong> {{ student.image.height }} px</li>
+                    <li><strong>الحجم:</strong> {{ student.image.size|filesizeformat }}</li>
+                </ul>
+            </div>
+
+            <!-- Grade Status -->
+            {% if student.gpa >= 90 %}
+                <p class="student-status excellent">Excellent</p>
+            {% elif student.gpa >= 80 %}
+                <p class="student-status very-good">Very Good</p>
+            {% elif student.gpa >= 70 %}
+                <p class="student-status good">Good</p>
+            {% elif student.gpa >= 60 %}
+                <p class="student-status accepted">Accepted</p>
+            {% else %}
+                <p class="student-status failed">Failed</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="related-section">
+        <h4>المدرسين المرتبطين بالطالب</h4>
+        {% if student.teachers.all %}
+            <ul>
+                {% for teacher in student.teachers.all %}
+                    <li>{{ teacher.first_name }} {{ teacher.last_name }} - ({{ teacher.department }})</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>لا يوجد مدرسين لهذا الطالب</p>
+        {% endif %}
+    </div>
+
+    <!-- ===== Profile Section ===== -->
+    <div class="related-section">
+        <h4>الملف الشخصي</h4>
+        {% if student.profile %}
+            <p>{{ student.profile.bio }}</p>
+        {% else %}
+            <p>لا يوجد ملف شخصي</p>
+        {% endif %}
+    </div>
+
+    <!-- ===== Courses Section ===== -->
+    <div class="related-section">
+        <h4>المقررات الدراسية</h4>
+        {% if student.course %}
+            <ul>
+                <li>{{ student.course.name }}{% if student.course.description %} - {{ student.course.description }}{% endif %}</li>
+            </ul>
+        {% else %}
+            <p>لا يوجد مقررات</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

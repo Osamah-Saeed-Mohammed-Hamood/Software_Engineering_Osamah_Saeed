@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/insert_student.css' %}">
+{% block pageTitle %}
+
+{% endblock %}
+
+<div class="form-container">
+    <div class="page-title">تعديل بيانات طالب</div>
+    <form method="post" action="{% url 'students:updateStudent' student.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div>
+            <label for="f_name">الاسم الأول</label>
+            <input type="text" id="f_name" name="f_name" required value="{{ student.f_name }}">
+        </div>
+
+        <div>
+            <label for="l_name">الاسم الأخير</label>
+            <input type="text" id="l_name" name="l_name" required value="{{ student.l_name }}">
+        </div>
+
+        <div>
+            <label for="age">العمر</label>
+            <input type="number" id="age" name="age" required value="{{ student.age }}">
+        </div>
+
+        <div>
+            <label for="level">المرحلة الجامعية</label>
+            <select name="level" id="level" required>
+                <option value="1st" {% if student.level == "1st" %}selected{% endif %}>1st</option>
+                <option value="2nd" {% if student.level == "2nd" %}selected{% endif %}>2nd</option>
+                <option value="3rd" {% if student.level == "3rd" %}selected{% endif %}>3rd</option>
+                <option value="4th" {% if student.level == "4th" %}selected{% endif %}>4th</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="gpa">المعدل التراكمي (GPA)</label>
+            <input type="number" step="0.01" min="0" max="100" id="gpa" name="gpa" value="{{ student.gpa }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label>حالة الطالب</label>
+            <div class="form-check">
+                <input type="radio" {% if student.status is True or student.status is None %}checked{% endif %} name="status" id="status1" value="True" required>
+                <label for="status1">منتظم</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" {% if student.status is False %}checked{% endif %} name="status" id="status2" value="False" required>
+                <label for="status2">غير منتظم</label>
+            </div>
+        </div>
+
+        <div>
+            <label for="report">التقرير الخاص بالطالب</label>
+            <textarea id="report" name="report" placeholder="{{ student.report }}"></textarea>
+        </div>
+
+        <!-- صورة الطالب -->
+        <div class="form-group">
+            <label for="img">صورة الطالب</label>
+            {% if student.image %}
+                <p>📌 الصورة الحالية: <img src="{{ student.image.url }}" alt="صورة الطالب" width="100"></p>
+            {% endif %}
+            <input type="file" id="img" name="img" accept=".png, .jpg, .jpeg">
+        </div>
+
+        <!-- ملف التقرير -->
+        <div class="form-group">
+            <label for="report_file">تقرير الطالب</label>
+            {% if student.file_report %}
+                <p>📌 الملف الحالي: <a href="{{ student.file_report.url }}" target="_blank">عرض الملف</a></p>
+            {% endif %}
+            <input type="file" id="report_file" name="report_file" accept=".pdf, .doc, .docx">
+        </div>
+<div class="form-group">
+    <label>اختر المدرسين:</label>
+    <div class="checkbox-group">
+        {% for teacher in teachers %}
+            <div class="checkbox-item">
+                <input 
+                    type="checkbox" 
+                    name="teachers" 
+                    value="{{ teacher.id }}" 
+                    id="teacher{{ teacher.id }}"
+                    {% if teacher in student.teachers.all %}checked{% endif %}
+                >
+                <label for="teacher{{ teacher.id }}">{{ teacher.first_name }} {{ teacher.last_name }}</label>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+    <!-- الملف الشخصي -->
+    <div class="form-group">
+        <label for="bio">السيرة الذاتية</label>
+        <textarea id="bio" name="bio" placeholder="أدخل السيرة الذاتية">{% if student.profile %}{{ student.profile.bio }}{% endif %}</textarea>
+    </div>
+
+        <!-- المقررات -->
+        <div class="form-group">
+            <label>المقرر الدراسي:</label>
+            <div class="checkbox-group radio-courses">
+                {% for course in all_courses %}
+                <div class="checkbox-item radio-course">
+                    <input 
+                        type="radio" 
+                        name="course"  
+                    value="{{ course.id }}" 
+                    id="course{{ course.id }}"
+                    {% if student_course_id == course.id %}checked{% endif %}
+                    >
+                    <label for="course{{ course.id }}">{{ course.name }}</label>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+
+        <div class="submit-btn">
+            <button type="submit">💾 حفظ التغييرات</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

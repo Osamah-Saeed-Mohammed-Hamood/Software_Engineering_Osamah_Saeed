@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">إضافة طالب جديد</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">حفظ</button>
+        <a href="{% url 'student_list' %}" class="btn btn-secondary">رجوع</a>
+    </form>
+</div>
+{% endblock %}

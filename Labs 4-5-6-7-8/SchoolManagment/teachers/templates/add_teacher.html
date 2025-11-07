@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/add_teacher.css' %}">
+{% block pageTitle %}
+
+{% endblock %}
+<div class="form-container">
+    <div class="page-title">إضافة معلم جديد</div>
+    <form method="post" action="{% url 'teachers:add_teacher' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="validationCustom01">الاسم الأول</label>
+            <div class="input-icon">
+                <span class="icon">📛</span>
+                <input type="text" id="validationCustom01" required name="first_name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="validationCustom02">الاسم الأخير</label>
+            <div class="input-icon">
+                <span class="icon">📛</span>
+                <input type="text" id="validationCustom02" required name="last_name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="validationDefault05">العمر</label>
+            <div class="input-icon">
+                <span class="icon">🎂</span>
+                <input type="number" id="validationDefault05" required name="age">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="level">الجنس </label>
+            <div class="input-icon">
+                <span class="icon">🎓</span>
+                <select id="gender" name="gender" required>
+                    <option selected disabled value="">حدد الحنس </option>
+                    <option value="ذكر">ذكر</option>
+                    <option value="انثى">انثى</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="gpa">القسم (GPA)</label>
+            <div class="input-icon">
+                <span class="icon">📈</span>
+                <input type="text" id="department" name="department" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>حالة المعلم</label>
+            <div class="form-check">
+                <input type="radio" name="status" id="status1" value="نعم" checked required>
+                <label for="status1">منتظم</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" name="status" id="status2" value="لا" required>
+                <label for="status2">غير منتظم</label>
+            </div>
+        </div>
+
+        <div class="submit-btn">
+            <button type="submit">✅ حــفــظ</button>
+            <a href="{% url 'teachers:teacher_list' %}" class="btn btn-secondary">⬅ رجوع</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %} 
+
+
+
+
